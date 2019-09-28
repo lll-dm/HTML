@@ -61,7 +61,7 @@
 </head>
 
 <body>
-    <audio src="audio/四季.mp3" autoplay="autoplay" loop="loop"></audio>
+    <audio src="season.mp3" autoplay="autoplay" loop="loop"></audio>
     <page id="a">春</page>
     <page id="b">夏</page>
     <page id="c">秋</page>
