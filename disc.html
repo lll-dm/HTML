@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猜骰子</title>
+    <script>
+        function hh() {
+            alert("你好啊！！！");
+            alert("好无聊啊！！！");
+            alert("要不要玩一个游戏！！！");
+            alert("玩什么呢？？？");
+            alert("......");
+            alert("......");
+            alert("......");
+            alert("......");
+            alert("......");
+            alert("......");
+            alert("......");
+            alert("......");
+            alert("啊！我想起来了！！！")
+            alert("我们猜数字吧");
+        }
+        hh();
+        while (true) {
+            var guess=prompt("请写入您要才的数字：");
+            var disc=Math.random()*6+1;
+            disc=Math.floor(disc);
+
+            if (!isNaN(guess)) {
+                if (disc == guess) {
+                    document.write("<img src=\"../image/0" + Math.floor(disc) + ".jpg\">");
+                    document.write("恭喜您猜对了")
+                    break;
+                } else {
+                    document.write("<img src=\"../image/0" + Math.floor(disc) + ".jpg\">");
+                    document.write("不好意思，你是蜘蛛吗");
+                    alert("再玩一遍吧！哈哈哈");
+                    hh();
+                }
+            } else {
+                document.write("输入数字啊");
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
