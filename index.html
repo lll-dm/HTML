@@ -32,6 +32,13 @@
             color: white;
             animation:myframe4 4s infinite ;
         }
+        #d1{
+    color:white;
+    font-size: 50px;
+    display: block;
+    <!--换行 -->
+    animation:myframe41 4s infinite;
+}
         @keyframes myframe1{
             0%{opacity:0;}
             24%{opacity: 100}
@@ -57,6 +64,13 @@
             75%{opacity: 0}
             100%{opacity: 100}
         }
+        @keyframes myframe41{
+    0%{opacity:0;}
+    75%{opacity: 0}
+    80%{opacity: 0}
+    90%{opacity: 100}
+    100%{opacity: 0}
+}
 </style>
 </head>
 
@@ -65,6 +79,9 @@
     <page id="a">春</page>
     <page id="b">夏</page>
     <page id="c">秋</page>
-    <page id="d">冬</page>
+    <page id="d">冬
+        <span id="d1">贞下启元</span>
+        <!--<span> 标签被用来组合文档中的行内元素-->
+    </page>
 </body>
 </html>
