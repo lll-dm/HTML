@@ -33,7 +33,7 @@
         <div id="mine">
             <h1>我的出招</h1>
             <div id="myChoice">
-                <img src="../image/石头剪刀布动图.gif">
+                <img src="石头剪刀布动图.gif">
             </div>
             <input id="剪刀" type="button" value="剪刀" onclick="changeM()">
             <input id="石头" type="button" value="石头" onclick="changeM()">
@@ -42,7 +42,7 @@
         <div id="computer">
             <h1>电脑出招</h1>
             <div id="computerChoice">
-                <img src="../image/石头剪刀布动图.gif">
+                <img src="石头剪刀布动图.gif">
             </div>
         </div>
     </div>
@@ -60,9 +60,9 @@
     function changeC() {
         var ran=Math.floor(Math.random()*3+1);
         switch (ran) {
-            case 1:document.getElementById("computerChoice").innerHTML="<img src=\"../image/石头.png\">";break;
-            case 2:document.getElementById("computerChoice").innerHTML="<img src=\"../image/剪刀.png\">";break;
-            case 3:document.getElementById("computerChoice").innerHTML="<img src=\"../image/布.png\">";break;
+            case 1:document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";break;
+            case 2:document.getElementById("computerChoice").innerHTML="<img src=\"剪刀.png\">";break;
+            case 3:document.getElementById("computerChoice").innerHTML="<img src=\"布.png\">";break;
         }
     }
 </script>
