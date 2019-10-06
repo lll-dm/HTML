@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container{
+            height: 300px;
+            width: 600px;
+            border: 10px solid black;/*边框*/
+            margin: 0 auto;/*居中显示*/
+        }
+        #container>div{
+            width: 300px;
+            height: 300px;
+            float: left;/*向左浮动，从左到右排序；向右浮动，从右向左排序*/
+        }
+        #mine{
+            text-align: center;
+            background-color: lightgreen;
+        }
+        #computer{
+            text-align: center;
+            background-color: lightpink;
+        }
+        #computerChoice>img{
+            transform: scaleX(-1);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="mine">
+            <h1>我的出招</h1>
+            <div id="myChoice">
+                <img src="../image/石头剪刀布动图.gif">
+            </div>
+            <input id="剪刀" type="button" value="剪刀" onclick="changeM()">
+            <input id="石头" type="button" value="石头" onclick="changeM()">
+            <input id="布" type="button" value="布" onclick="changeM()">
+        </div>
+        <div id="computer">
+            <h1>电脑出招</h1>
+            <div id="computerChoice">
+                <img src="../image/石头剪刀布动图.gif">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+    var str;
+    function changeM() {
+        str=event.srcElement.id;//获得按钮id
+        document.getElementById("myChoice").innerHTML="<img src=\"../image/"+str+".png\">";
+        changeC();
+
+    }
+    function changeC() {
+        var ran=Math.floor(Math.random()*3+1);
+        switch (ran) {
+            case 1:document.getElementById("computerChoice").innerHTML="<img src=\"../image/石头.png\">";break;
+            case 2:document.getElementById("computerChoice").innerHTML="<img src=\"../image/剪刀.png\">";break;
+            case 3:document.getElementById("computerChoice").innerHTML="<img src=\"../image/布.png\">";break;
+        }
+    }
+</script>
