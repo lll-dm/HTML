@@ -65,6 +65,7 @@
 </html>
 <script>
     var str;
+    var score=0;
     function changeM() {
         str=event.srcElement.id;//获得按钮id
         console.info(str);
@@ -73,10 +74,14 @@
         var computerResult=changeC();
         if(str==computerResult)
             document.getElementById("result").innerHTML="TIE";
-        else if(str=="石头"&&computerResult!="剪刀"||str=="剪刀"&&computerResult!="布"||str=="布"&&computerResult!="石头")
+        else if(str=="石头"&&computerResult!="剪刀"||str=="剪刀"&&computerResult!="布"||str=="布"&&computerResult!="石头"){
             document.getElementById("result").innerHTML="YOU LOSE";
-        else
+            score--;
+        }
+        else{
             document.getElementById("result").innerHTML="YOU WIN";
+            score++;
+        }
         f();
     }
     function changeC() {
