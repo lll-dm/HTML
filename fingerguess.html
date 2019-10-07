@@ -15,6 +15,11 @@
             height: 300px;
             float: left;/*向左浮动，从左到右排序；向右浮动，从右向左排序*/
         }
+        #container>#result{
+            font-size: 100px;
+            width: 600px;
+            text-align: center;
+        }
         #mine{
             text-align: center;
             background-color: lightgreen;
@@ -45,6 +50,7 @@
                 <img src="石头剪刀布动图.gif">
             </div>
         </div>
+        <div id="result"></div>
     </div>
 
 </body>
@@ -56,13 +62,20 @@
         console.info(str);
         document.getElementById("myChoice").innerHTML="<img src=\""+str+".png\">"
         changeC();
+        var computerResult=changeC();
+        if(str==computerResult)
+            document.getElementById("result").innerHTML="TIE";
+        else if(str=="石头"&&computerResult!="剪刀"||str=="剪刀"&&computerResult!="布"||str=="布"&&computerResult!="石头")
+            document.getElementById("result").innerHTML="YOU LOSE";
+        else
+            document.getElementById("result").innerHTML="YOU WIN";
     }
     function changeC() {
         var ran=Math.floor(Math.random()*3+1);
         switch (ran) {
-            case 1:document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";break;
-            case 2:document.getElementById("computerChoice").innerHTML="<img src=\"剪刀.png\">";break;
-            case 3:document.getElementById("computerChoice").innerHTML="<img src=\"布.png\">";break;
+            case 1:document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";return "石头";
+            case 2:document.getElementById("computerChoice").innerHTML="<img src=\"剪刀.png\">";return "剪刀";
+            case 3:document.getElementById("computerChoice").innerHTML="<img src=\"布.png\">";return "布";
         }
     }
 </script>
