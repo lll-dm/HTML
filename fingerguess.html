@@ -53,12 +53,7 @@
     var str;
     function changeM() {
         str=event.srcElement.id;//获得按钮id
-        if(str="剪刀")
-            document.getElementById("myChoice").innerHTML="<img src=\"剪刀.png\">";
-        else if(str="石头")
-            document.getElementById("myChoice").innerHTML="<img src=\"石头.png\">";
-        else
-            document.getElementById("myChoice").innerHTML="<img src=\"布.png\">";
+        document.getElementById("computerChoice").innerHTML="<img src=\"\"+str+\*.png\*>"
         changeC();
 
     }
