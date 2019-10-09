@@ -27,6 +27,12 @@
             text-align: center;
 
         }
+        #container>#grade{
+            font-size: 30px;
+            width: 600px;
+            height: 50px;
+            text-align: left;
+        }
         #mine{
             text-align: center;
             background-color: lightgreen;
@@ -58,6 +64,7 @@
             </div>
         </div>
         <div id="result"></div>
+        <div id="grade"></div>
         <div id="score"></div>
     </div>
 
@@ -66,33 +73,119 @@
 <script>
     var str;
     var score=0;
+    var grade=1;
+    var imitation="布";
+    var playerWin;
+    var g3="布",g3w=new Array("剪刀","石头","布");
+    var gk=new Array("大锤哥","模仿弟","狂妄叔","爱布先生","随即爷爷");
     function changeM() {
         str=event.srcElement.id;//获得按钮id
-        console.info(str);
         document.getElementById("myChoice").innerHTML="<img src=\""+str+".png\">"
         changeC();
         var computerResult=changeC();
-        if(str==computerResult)
-            document.getElementById("result").innerHTML="TIE";
-        else if(str=="石头"&&computerResult!="剪刀"||str=="剪刀"&&computerResult!="布"||str=="布"&&computerResult!="石头"){
-            document.getElementById("result").innerHTML="YOU LOSE";
+        if (str == computerResult){
+            document.getElementById("result").innerHTML = "TIE";
+            playerWin=true;
+        }
+       else if (str == "石头" && computerResult != "剪刀" || str == "剪刀" && computerResult != "布" || str == "布" && computerResult != "石头") {
+            document.getElementById("result").innerHTML = "YOU LOSE";
+            playerWin=false;
+            g3=computerResult;
             score--;
+            if(score<0){
+                if(grade==1){
+                    grade=1;
+                }
+                else {
+                    grade--;
+                    score=5;
+                }
+            }
         }
-        else{
-            document.getElementById("result").innerHTML="YOU WIN";
+        else {
+            document.getElementById("result").innerHTML = "YOU WIN";
+            playerWin=true;
             score++;
+            if(score>5){
+                score=0;
+                grade++;
+                if (grade==6){
+                    document.write("您已通关");
+                }
+            }
         }
+        imitation=str;//第二关更换值
+        g();
         f();
     }
     function changeC() {
         var ran=Math.floor(Math.random()*3+1);
-        switch (ran) {
-            case 1:document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";return "石头";
-            case 2:document.getElementById("computerChoice").innerHTML="<img src=\"剪刀.png\">";return "剪刀";
-            case 3:document.getElementById("computerChoice").innerHTML="<img src=\"布.png\">";return "布";
+       if(grade==1){
+            //大锤哥
+            document.getElementById("name").innerHTML="大锤哥";
+            document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";
+            return "石头";
         }
+        else if(grade==2){
+            //模仿弟
+            document.getElementById("name").innerHTML="模仿弟";
+            document.getElementById("computerChoice").innerHTML="<img src=\""+imitation+".png\">";
+            return imitation;
+        }
+        else if(grade==3){
+            //赢了还出，输了就换
+            document.getElementById("name").innerHTML="狂妄叔";
+            if(playerWin==false){
+                document.getElementById("computerChoice").innerHTML="<img src=\""+g3+".png\">";
+                return g3;
+            }else {
+                document.getElementById("computerChoice").innerHTML="<img src=\""+g3w[g3wInt()]+".png\">"
+                return g3w[g3wInt()];
+            }
+        }
+        else if(grade==4){
+            document.getElementById("name").innerHTML="爱布先生";
+            if(ran<=2){
+                document.getElementById("computerChoice").innerHTML="<img src=\"布.png\">";
+                return "布"
+            }
+            else if(ran<=2.5){
+                document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";
+                return "石头";
+            }
+            else if(ran<=3){
+                document.getElementById("computerChoice").innerHTML="<img src=\"剪刀.png\">";
+                return "剪刀"
+            }
+        }
+        else if(grade==5){
+            document.getElementById("computerChoice").innerHTML="随机爷爷";
+            switch (ran) {
+                case 1:
+                    document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";
+                    return "石头";
+                case 2:
+                    document.getElementById("computerChoice").innerHTML="<img src=\"剪刀.png\">";
+                    return "剪刀"
+                case 3:
+                    document.getElementById("computerChoice").innerHTML="<img src=\"布.png\">";
+                    return "布"
+            }
+        }
+    }
+    //积分等级输出
+    function g() {
+        document.getElementById("grade").innerHTML="第"+grade+"关";
+        document.getElementById("name").innerHTML=gk[grade-1];
     }
     function f() {
         document.getElementById("score").innerHTML="积分"+score;
+    }
+    function g3wInt() {
+        for (var i = 0; i < 3; i++) {
+            if (g3w[i]!=imitation&&g3w[i]!=g3) {
+                return i;
+            }
+        }
     }
 </script>
