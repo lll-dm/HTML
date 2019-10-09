@@ -18,12 +18,13 @@
         #container>#result{
             font-size: 100px;
             width: 600px;
+            height: 150px;
             text-align: center;
         }
         #container>#score{
-            font-size: 30px;
+            font-size: 60px;
             width: 600px;
-            height: 50px;
+            height: 100px;
             text-align: center;
 
         }
@@ -51,16 +52,16 @@
         <div id="mine">
             <h1>我的出招</h1>
             <div id="myChoice">
-                <img src="石头剪刀布动图.gif">
+                <img src="../image/石头剪刀布动图.gif">
             </div>
             <input id="剪刀" type="button" value="剪刀" onclick="changeM()">
             <input id="石头" type="button" value="石头" onclick="changeM()">
             <input id="布" type="button" value="布" onclick="changeM()">
         </div>
         <div id="computer">
-            <h1>电脑出招</h1>
+            <h1 id="name">电脑出招</h1>
             <div id="computerChoice">
-                <img src="石头剪刀布动图.gif">
+                <img src="../image/石头剪刀布动图.gif">
             </div>
         </div>
         <div id="result"></div>
@@ -79,15 +80,16 @@
     var g3="布",g3w=new Array("剪刀","石头","布");
     var gk=new Array("大锤哥","模仿弟","狂妄叔","爱布先生","随即爷爷");
     function changeM() {
-        str=event.srcElement.id;//获得按钮id
-        document.getElementById("myChoice").innerHTML="<img src=\""+str+".png\">"
-        changeC();
-        var computerResult=changeC();
+        str = event.srcElement.id;//获得按钮id
+        document.getElementById("myChoice").innerHTML = "<img src=\"" + str + ".png\">";
+        var computerResult = changeC();
+
+        //输赢逻辑
         if (str == computerResult){
             document.getElementById("result").innerHTML = "TIE";
             playerWin=true;
         }
-       else if (str == "石头" && computerResult != "剪刀" || str == "剪刀" && computerResult != "布" || str == "布" && computerResult != "石头") {
+        else if (str == "石头" && computerResult != "剪刀" || str == "剪刀" && computerResult != "布" || str == "布" && computerResult != "石头") {
             document.getElementById("result").innerHTML = "YOU LOSE";
             playerWin=false;
             g3=computerResult;
@@ -118,9 +120,11 @@
         g();
         f();
     }
+    //电脑出招
     function changeC() {
-        var ran=Math.floor(Math.random()*3+1);
-       if(grade==1){
+        var ran;
+        ran=Math.floor(Math.random()*3+1);
+        if(grade==1){
             //大锤哥
             document.getElementById("name").innerHTML="大锤哥";
             document.getElementById("computerChoice").innerHTML="<img src=\"石头.png\">";
